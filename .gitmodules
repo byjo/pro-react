@@ -1,0 +1,3 @@
+[submodule "kanban-board"]
+	path = kanban-board
+	url = https://github.com/byjo/kanban-board.git
