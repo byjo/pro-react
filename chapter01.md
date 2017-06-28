@@ -18,7 +18,7 @@
 	- module -> entery -> bundle
 	- 빌드 또한 가능 
 * Grunt, gulp
-	- 이거슨 프로젝트 빌드 도구
+	- 이거슨 js 프로젝트 빌드 도구
 * Babel
 	- js compiler (transpiler : source to source compiler)
 
@@ -41,8 +41,10 @@
 
 
 ## 장점
-* virtual DOM
-* native js
+* SPA에 맞는 반응형 렌더링 
+	- virtual DOM 성능 보장 
+* native js로 마크업까지 커버 가능
+	- 컴포넌트에만 집중하면 된다 
 * 추상화
 
 
@@ -63,6 +65,10 @@
 ### state
 - 컴포넌트가 가질 수 있는 데이터 셋 
 - this.setState() 메소드로 변경 
+	+ 왜 state를 직접 변경하면 안되는가? : re-render를 못한다는데
+	+ React LifeCycle 
+		- setState() 호출 시 shouldComponentUpdate(object nextProps, object nextState) 메소드의 리턴 값으로 render() 를 할지 말지 여부가 결정  
+		- 해당 메소드에서 state변화를 감지 못하는거 아닐까 : reference 비교 
 - state 변경 시, 컴포넌트의 반응형 렌더링 트리거 -> 해당 컴포턴트 및 자식 컴포넌트 다시 렌더링 
 
 
