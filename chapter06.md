@@ -12,7 +12,7 @@
 * Action
     - `App에서 일어나는 일`
     - 쉽게 생각하면 User Interation, 이에 따른 내부 action도 있을 수 있음
-    - type property, (optional) payload를 가진 object
+    - type property, (optional) payload를 가진 object  
         - payload 가 뭘까? 정보..?
 * Dispatcher
     - `The dispatcher operates as the central hub of data flow`
@@ -23,7 +23,10 @@
     - 상태 업데이트시 이벤트를 생성 & 방출하여 변경을 알린다 
 * View
     - `말 그대로 뷰... 데이터를 화면에 그린다`
-    - React Component 
+    - React Component
+    - Controller View
+        - react component는 부모 component -> 자식 component로 props를 통해 데이터 전달 
+        - 부모 component로, controller의 역할도 가진다 
 
 cf. redux  
 flux를 사용하기 쉽게 도와주는 라이브러리 
