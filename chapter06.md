@@ -25,11 +25,10 @@
     - `말 그대로 뷰... 데이터를 화면에 그린다`
     - React Component 
 
-cf. redux
+cf. redux  
 flux를 사용하기 쉽게 도와주는 라이브러리 
+궁금하면 [여기](https://deminoth.github.io/redux/)로 ^^...
 
-(https://haruair.github.io/flux/docs/overview.html#content)
-(https://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html)  
 
 
 
@@ -144,3 +143,9 @@ export default new AppDispatcher();
 * export default 의 의미는?
     - import / export
 * super(...arguments);
+
+
+
+## Reference
+* https://haruair.github.io/flux/docs/overview.html#content
+* https://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html
