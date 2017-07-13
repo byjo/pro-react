@@ -1,44 +1,113 @@
 # CHAPTER 06
 
-## flux
+## FLUX
 > Flux is the application architecture Facebook uses to build JavaScript applications. It's based on a unidirectional data flow. 
 
-(https://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html)
-즉, 자바스크립트 디자인 패턴.
+*즉, 자바스크립트 디자인 패턴.*
+
+### Flux Simple Diagram
+(http://imgur.com/a/QF3CW)
 
 * Action
-    - type
-    - payload 가 뭘까? 정보..?
-    - (+) ActionCreator
-        + action object를 dispatcher에 전달 
-            * Dispatcher.dispatch() 하는 것 같은데 ...
+    - `App에서 일어나는 일`
+    - 쉽게 생각하면 User Interation, 이에 따른 내부 action도 있을 수 있음
+    - type property, (optional) payload를 가진 object
+        - payload 가 뭘까? 정보..?
+* Dispatcher
+    - `The dispatcher operates as the central hub of data flow`
+    - 등록된 스토어로 액션을 발송 
 * Store
-    - 상태를 갖고 있으며, 스스로 상태를 update
-    - 각 스토어는 자신을 dispatcher에 등록(register)
-    - action의 type과 이에 대한 callback ...?
+    - `데이터(상태)를 갖고 있으며, 상태 업데이트 시 view에게 새로운 데이터를 전달`
+    - MVC의 model과 비슷하나, 스스로만이 상태를 update 가능하다
+    - 상태 업데이트시 이벤트를 생성 & 방출하여 변경을 알린다 
 * View
-* (+) Dispatcher
-    - The dispatcher is a singleton, and operates as the central hub of data flow
-    - dispatch() 등록된 스토어로 액션을 발송 
+    - `말 그대로 뷰... 데이터를 화면에 그린다`
+    - React Component 
 
 cf. redux
 flux를 사용하기 쉽게 도와주는 라이브러리 
 
+(https://haruair.github.io/flux/docs/overview.html#content)
+(https://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html)  
+
+
 ## EXAMPLE 01. BANK
+### 구현해야 할 것 
+* Action
+    - createAccount
+    - depositIntoAccount
+    - withdrawFromAccount
+* Dispatcher
+* Store
+    - BankBalanceStore : 잔고 데이터 관리 
+    - BankRewardStore : 잔고에 따른 등급 관리 
+* View
+    - 잔고를 보여준다
+    - user가 deposit/withdraw 행위를 할 수 있는 요소를 제공한다
+
+
+### Flux Diagram
+(http://imgur.com/a/kCUCE)
+
+* ActionCreator
+    - action을 정의하고, action object를 dispatcher에 전달 
+        + Dispatcher의 dispatch() 메소드를 사용 
+    ```
+    let BankActions = {
+        createAccount() {
+            AppDispatcher.dispatch({
+                type : bankConstans.CREATE_ACCOUNT,
+                amount : 0
+            });
+        }
+        ...
+    ```
+* Action
+* Dispatcher
+    - 자신에게 등록된 스토어로 액션을 발송 
+    - Dispatcher는 자신의 앞 뒤 요소들에 method만 제공하는 느낌 
+* Store
+    - 각 스토어는 자신을 dispatcher에 등록(register)
+        + action에 따른 callback
+    ```
+    BankBalanceStore.dispatchToken = AppDispatcher.register((action) => {
+        switch (action.type) {
+            case bankConstants.WITHDRAW_FROM_ACCOUNT :
+                balance = balance - action.amount;
+                __emitter.emit(CHANGE_EVENT);
+                break;
+            ...
+        }
+    }
+    ```
+* View
+
 ### Flux Util Store
 * Store
-* ReduceStore
-    - Reduce ?
-    - 
-* MapStore
+    - ReduceStore
+    - MapStore
 * flux Container
-    - React Component에 getStores, calculateState 는 원래 있는건가? 
-    - Container 내 App이 가져야 하는 것 같은데 ? 
-    - Container가 implements 해야 할 function 들 
+    - High Order Component
+    ```
+    class App extends Component {
+        ...
+    }
+
+    App.getStores = () => ([BankBalanceStore, BankRewardStore]);
+    App.calculateState = (prevState) => ({
+        balance : BankBalanceStore.getState(),
+        rewardsTier : BankRewardStore.getState()
+    });
+
+    const AppContainer = Container.create(App);
+    ```
+        + getStores, calculateState : Container가 implements 해야 할 function 들 
  
 
-## QUESTIONS
 
+
+
+## QUESTIONS
 ### Bank
 ```
 class App extends Component {
