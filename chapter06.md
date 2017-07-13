@@ -87,6 +87,36 @@ flux를 사용하기 쉽게 도와주는 라이브러리
     }
     ```
 * View
+    - (렌더링 하는데) 필요한 상태를 관리하는 스토어에 이벤트 리스너를 등록 
+    - 스토어 변경 시 방출된 이벤트를 통해, 자신의 상태를 변화 & re-render
+    ```
+    class App extends Component {
+        constructor() {
+            super(...arguments);
+            BankActions.createAccount();
+            this.state = {
+                balance : BankBalanceStore.getState()
+            }
+        }
+
+        componentDidMount() {
+            this.storeSubscription = BankBalanceStore.addListener(
+                data => this.handleStoreChange(data)
+            );
+        }
+
+        componentWillUnmount() {
+            this.storeSubscription.remove();
+        }
+
+        handleStoreChange() {
+            this.setState({
+                balance : BankBalanceStore.getState()
+            });
+        }
+        ...
+    }
+    ```
 
 
 ### Flux Util Store
