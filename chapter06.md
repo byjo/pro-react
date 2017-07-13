@@ -5,8 +5,9 @@
 
 *즉, 자바스크립트 디자인 패턴.*
 
+
 ### Flux Simple Diagram
-(http://imgur.com/a/QF3CW)
+![](https://haruair.github.io/flux/img/flux-simple-f8-diagram-1300w.png)
 
 * Action
     - `App에서 일어나는 일`
@@ -31,6 +32,8 @@ flux를 사용하기 쉽게 도와주는 라이브러리
 (https://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html)  
 
 
+
+
 ## EXAMPLE 01. BANK
 ### 구현해야 할 것 
 * Action
@@ -46,8 +49,9 @@ flux를 사용하기 쉽게 도와주는 라이브러리
     - user가 deposit/withdraw 행위를 할 수 있는 요소를 제공한다
 
 
+
 ### Flux Diagram
-(http://imgur.com/a/kCUCE)
+![](https://facebook.github.io/react/img/blog/flux-diagram.png)
 
 * ActionCreator
     - action을 정의하고, action object를 dispatcher에 전달 
@@ -82,6 +86,7 @@ flux를 사용하기 쉽게 도와주는 라이브러리
     ```
 * View
 
+
 ### Flux Util Store
 * Store
     - ReduceStore
@@ -100,8 +105,8 @@ flux를 사용하기 쉽게 도와주는 라이브러리
     });
 
     const AppContainer = Container.create(App);
-    ```
-        + getStores, calculateState : Container가 implements 해야 할 function 들 
+    ``` 
+    - getStores, calculateState : Container가 implements 해야 할 function 들 
  
 
 
