@@ -46,7 +46,6 @@ flux를 사용하기 쉽게 도와주는 라이브러리
 * Dispatcher
 * Store
     - BankBalanceStore : 잔고 데이터 관리 
-    - BankRewardStore : 잔고에 따른 등급 관리 
 * View
     - 잔고를 보여준다
     - user가 deposit/withdraw 행위를 할 수 있는 요소를 제공한다
