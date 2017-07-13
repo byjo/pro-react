@@ -27,6 +27,8 @@ tag/property/childNode
 
 
 ### HTML Attributes vs property
+attribute는 HTML 문서 내 존재하는 HTML ??의 추가적 정보
+property는 DOM tree에서의 attribute의 표현. DOM node/element의 정보 
 - (https://medium.com/@jeongwooahn/html-attribute%EC%99%80-property-%EC%9D%98-%EC%B0%A8%EC%9D%B4-d3c172cebc41)
 - [jQuery prop](http://api.jquery.com/prop/)
 
